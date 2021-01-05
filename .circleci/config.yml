@@ -458,7 +458,7 @@ step-install-signing-cert-on-mac: &step-install-signing-cert-on-mac
   run:
     name: Import and trust self-signed codesigning cert on MacOS
     command: |
-      if [ "`uname`" == "Darwin" ]; then
+      if  [ "$TARGET_ARCH" != "arm64" ] &&[ "`uname`" == "Darwin" ]; then
         cd src/electron
         ./script/codesign/generate-identity.sh
       fi
@@ -467,7 +467,7 @@ step-install-gnutar-on-mac: &step-install-gnutar-on-mac
   run:
     name: Install gnu-tar on macos
     command: |
-      if [ "`uname`" == "Darwin" ]; then
+      if  [ "$TARGET_ARCH" != "arm64" ] &&[ "`uname`" == "Darwin" ]; then
         if [ ! -d /usr/local/Cellar/gnu-tar/ ]; then
           brew update
           brew install gnu-tar
