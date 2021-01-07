@@ -633,6 +633,7 @@ describe('app module', () => {
 
     ifit(process.platform !== 'win32')('sets and returns the app as a login item', function () {
       app.setLoginItemSettings({ openAtLogin: true });
+      console.log('(app.getLoginItemSettings are:', app.getLoginItemSettings());
       expect(app.getLoginItemSettings()).to.deep.equal({
         openAtLogin: true,
         openAsHidden: false,
@@ -681,6 +682,7 @@ describe('app module', () => {
 
     ifit(process.platform !== 'win32')('adds a login item that loads in hidden mode', function () {
       app.setLoginItemSettings({ openAtLogin: true, openAsHidden: true });
+      console.log('2 app.getLoginItemSettings are:', app.getLoginItemSettings());
       expect(app.getLoginItemSettings()).to.deep.equal({
         openAtLogin: true,
         openAsHidden: process.platform === 'darwin' && !process.mas, // Only available on macOS
@@ -710,6 +712,7 @@ describe('app module', () => {
     });
 
     it('correctly sets and unsets the LoginItem', function () {
+      console.log('3 app.getLoginItemSettings are:', app.getLoginItemSettings());
       expect(app.getLoginItemSettings().openAtLogin).to.equal(false);
 
       app.setLoginItemSettings({ openAtLogin: true });
@@ -726,6 +729,7 @@ describe('app module', () => {
       expect(app.getLoginItemSettings().openAsHidden).to.equal(false);
 
       app.setLoginItemSettings({ openAtLogin: true, openAsHidden: true });
+      console.log('4 app.getLoginItemSettings are:', app.getLoginItemSettings());
       expect(app.getLoginItemSettings().openAtLogin).to.equal(true);
       expect(app.getLoginItemSettings().openAsHidden).to.equal(true);
 

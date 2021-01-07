@@ -14,6 +14,7 @@ const fixturesPath = path.resolve(__dirname, 'fixtures');
 
 // We can only test the auto updater on darwin non-component builds
 ifdescribe(process.platform === 'darwin' && process.arch !== 'arm64' && !process.mas && !features.isComponentBuild())('autoUpdater behavior', function () {
+  console.log(`Running autoUpdater with ${process.platform} and ${process.arch}`);
   this.timeout(120000);
 
   let identity = '';
