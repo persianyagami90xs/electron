@@ -467,7 +467,7 @@ step-install-gnutar-on-mac: &step-install-gnutar-on-mac
   run:
     name: Install gnu-tar on macos
     command: |
-      if  [ "$TARGET_ARCH" != "arm64" ] &&[ "`uname`" == "Darwin" ]; then
+      if  [ "`uname`" == "Darwin" ]; then
         if [ ! -d /usr/local/Cellar/gnu-tar/ ]; then
           brew update
           brew install gnu-tar
